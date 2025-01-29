@@ -8,7 +8,16 @@ pipeline {
     stages {
         stage('Checkout Project') {
             steps {
-                git branch: 'main', url: "${PROJECT_REPO}"
+                git branch: 'master', 
+                    url: "${PROJECT_REPO}"
+            }
+        }
+
+        stage('List Files in Workspace') {
+            steps {
+                script {
+                    bat 'dir /s'  // Lists all files to verify hello.py exists
+                }
             }
         }
 
